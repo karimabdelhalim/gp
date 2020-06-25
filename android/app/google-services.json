@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "470573293519",
+    "firebase_url": "https://courses-registration-advisor.firebaseio.com",
+    "project_id": "courses-registration-advisor",
+    "storage_bucket": "courses-registration-advisor.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470573293519:android:f93ce74f5e86c888d63cba",
+        "android_client_info": {
+          "package_name": "cra.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "470573293519-cpb0tatvi732h1qcte4j762hvjgrj55f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcoVxzh4hqUPyBFFkwVfHcVZEl2KtmXKo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "470573293519-cpb0tatvi732h1qcte4j762hvjgrj55f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
