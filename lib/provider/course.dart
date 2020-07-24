@@ -2,29 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class Course with ChangeNotifier {
+  final String courseType;
   final String id;
   final String name;
-  final String description;
+
   final int hours;
-  final int level;
-  final String package;
-  bool ispath;
+  final String catrgory;
+  final String status;
+
+  final String dependon;
+  bool ispass;
   bool isenroll;
   Course(
       {this.id,
-      this.level,
-      this.description,
-      this.hours,
       this.name,
-      this.package,
+      this.courseType,
+      this.hours,
       this.isenroll = false,
-      this.ispath = false});
+      this.ispass = false,
+      this.catrgory,
+      this.status = 'non',
+      this.dependon = 'non'});
   void toggelenroll(bool enroll) {
     isenroll = enroll;
   }
 
   void toggelpath() {
-    ispath = !ispath;
+    ispass = !ispass;
     notifyListeners();
   }
 }

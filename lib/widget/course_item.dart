@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gp1/provider/cources.dart';
 import 'package:gp1/provider/course.dart';
 import 'package:gp1/screen/detail_screen.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +14,13 @@ class CoursetItem extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(10.00),
       child: GridTile(
+        header: GridTileBar(
+          backgroundColor: Colors.black54,
+          title: Text(
+            course.name,
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
         child: GestureDetector(
           onTap: () {
             Navigator.of(context)
@@ -25,21 +33,28 @@ class CoursetItem extends StatelessWidget {
         ),
         footer: GridTileBar(
           backgroundColor: Colors.black54,
-          leading: Consumer<Course>(
-            builder: (context, course, _) => FlatButton(
-              color: Colors.black12,
-              onPressed: () {
-                course.toggelpath();
-              },
-              child: course.ispath
-                  ? Text(
-                      "Pathed",
-                      style: TextStyle(color: Colors.red),
-                    )
-                  : Text(
-                      "Path",
-                      style: TextStyle(color: Colors.green),
-                    ),
+          leading: RaisedButton(
+            color: Colors.black12,
+            onPressed: () {
+              course.toggelpath();
+            },
+            child: course.ispass
+                ? Text(
+                    "Passed",
+                    style: TextStyle(color: Colors.red),
+                  )
+                : Text(
+                    "Pass",
+                    style: TextStyle(color: Colors.green),
+                  ),
+          ),
+          trailing: IconButton(
+            onPressed: () {
+              Provider.of<Courses>(context, listen: false);
+            },
+            icon: Icon(
+              Icons.clear,
+              color: Colors.red,
             ),
           ),
         ),

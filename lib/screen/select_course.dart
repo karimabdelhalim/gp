@@ -13,9 +13,18 @@ class SelectItem extends StatefulWidget {
 class _SelectItemState extends State<SelectItem> {
   List<String> droplist = ['a', 'x', 'd', 'g'];
   String selectoptiontest = 'a';
-  List<Course> selectoption = List<Course>(10);
+  List<Course> selectoption = List<Course>(12); //= List<Course>(10);
+  List<Course> selectedItem = List<Course>();
   Course ss;
   // final listo = ModalRoute.of(context).settings.arguments as List;
+//  Course makeSelect(Course item) {
+//    Course newitem;
+//    setState(() {
+//      newitem = item;
+//    });
+//
+//    return newitem;
+//  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,24 +56,7 @@ class _SelectItemState extends State<SelectItem> {
             Row(
               children: <Widget>[
                 DropdownButton(
-                  // value: selectcourse[0],
-                  items: droplist.map((String cor) {
-                    return DropdownMenuItem<String>(
-                      child: Text(cor),
-                      value: cor,
-                    );
-                  }).toList(),
-                  onChanged: (newvalue) {
-                    setState(() {
-                      selectoptiontest = newvalue;
-                    });
-
-                    print(newvalue);
-                  },
-                  value: selectoptiontest,
-                ),
-                DropdownButton(
-                  // value: selectcourse[0],
+                  hint: Text("select Course"),
                   items: itemlist.map<DropdownMenuItem<Course>>((Course cor) {
                     return DropdownMenuItem<Course>(
                       child: Text(cor.name),
@@ -72,172 +64,224 @@ class _SelectItemState extends State<SelectItem> {
                     );
                   }).toList(),
                   onChanged: (Course newvalue) {
-                    providerdata.setSelectedItem(newvalue);
                     setState(() {
-                      ss = providerdata.selected;
-                      //  selectoption[1] = providerdata.selected;
-                    });
+                      selectoption[0] = newvalue;
 
-                    print(ss.name);
+                      print(selectoption[0].name);
+                    });
                   },
-                  value: ss,
+                  value: selectoption[0],
+                ),
+                DropdownButton(
+                  hint: Text("select Course"),
+                  items: itemlist.map<DropdownMenuItem<Course>>((Course cor) {
+                    return DropdownMenuItem<Course>(
+                      child: Text(cor.name),
+                      value: cor,
+                    );
+                  }).toList(),
+                  onChanged: (Course newvalue) {
+                    setState(() {
+                      selectoption[1] = newvalue;
+
+                      print(selectoption[1].name);
+                    });
+                  },
+                  value: selectoption[1],
                 ),
               ],
             ),
-//          Row(
-//            children: <Widget>[
-//              DropdownButton(
-//                // value: selectcourse[0],
-//                items: itemlist.map((Course cor) {
-//                  return DropdownMenuItem<Course>(
-//                    child: Text(cor.name),
-//                    value: cor,
-//                  );
-//                }).toList(),
-//                onChanged: (Course newvalue) {
-//                  setState(
-//                    () {
-//                      selectoption[2] = newvalue;
-//                    },
-//                  );
-//                  print(newvalue.name);
-//                },
-//                value: selectoption[2],
-//              ),
-//              DropdownButton(
-//                // value: selectcourse[0],
-//                items: itemlist.map((Course cor) {
-//                  return DropdownMenuItem<Course>(
-//                    child: Text(cor.name),
-//                    value: cor,
-//                  );
-//                }).toList(),
-//                onChanged: (newvalue) {
-//                  setState(
-//                    () {
-//                      selectoption[3] = newvalue;
-//                    },
-//                  );
-//                },
-//                value: selectoption[3],
-//              ),
-//            ],
-//          ),
-//          Row(
-//            children: <Widget>[
-//              DropdownButton(
-//                // value: selectcourse[0],
-//                items: itemlist.map((Course cor) {
-//                  return DropdownMenuItem<Course>(
-//                    child: Text(cor.name),
-//                    value: cor,
-//                  );
-//                }).toList(),
-//                onChanged: (newvalue) {
-//                  setState(
-//                    () {
-//                      selectoption[4] = newvalue;
-//                    },
-//                  );
-//                },
-//                value: selectoption[4],
-//              ),
-//              DropdownButton(
-//                // value: selectcourse[0],
-//                items: itemlist.map((Course cor) {
-//                  return DropdownMenuItem<Course>(
-//                    child: Text(cor.name),
-//                    value: cor,
-//                  );
-//                }).toList(),
-//                onChanged: (newvalue) {
-//                  setState(
-//                    () {
-//                      selectoption[5] = newvalue;
-//                    },
-//                  );
-//                },
-//                value: selectoption[5],
-//              ),
-//            ],
-//          ),
-//          Row(
-//            children: <Widget>[
-//              DropdownButton(
-//                // value: selectcourse[0],
-//                items: itemlist.map((Course cor) {
-//                  return DropdownMenuItem<Course>(
-//                    child: Text(cor.name),
-//                    value: cor,
-//                  );
-//                }).toList(),
-//                onChanged: (newvalue) {
-//                  setState(
-//                    () {
-//                      selectoption[6] = newvalue;
-//                    },
-//                  );
-//                },
-//                value: selectoption[6],
-//              ),
-//              DropdownButton(
-//                // value: selectcourse[0],
-//                items: itemlist.map((Course cor) {
-//                  return DropdownMenuItem<Course>(
-//                    child: Text(cor.name),
-//                    value: cor,
-//                  );
-//                }).toList(),
-//                onChanged: (newvalue) {
-//                  setState(
-//                    () {
-//                      selectoption[7] = newvalue;
-//                    },
-//                  );
-//                },
-//                value: selectoption[7],
-//              ),
-//            ],
-//          ),
-//          Row(
-//            children: <Widget>[
-//              DropdownButton(
-//                // value: selectcourse[0],
-//                items: itemlist.map((Course cor) {
-//                  return DropdownMenuItem<Course>(
-//                    child: Text(cor.name),
-//                    value: cor,
-//                  );
-//                }).toList(),
-//                onChanged: (newvalue) {
-//                  setState(
-//                    () {
-//                      selectoption[8] = newvalue;
-//                    },
-//                  );
-//                },
-//                value: selectoption[8],
-//              ),
-//              DropdownButton(
-//                // value: selectcourse[0],
-//                items: itemlist.map((Course cor) {
-//                  return DropdownMenuItem<Course>(
-//                    child: Text(cor.name),
-//                    value: cor,
-//                  );
-//                }).toList(),
-//                onChanged: (newvalue) {
-//                  setState(
-//                    () {
-//                      selectoption[9] = newvalue;
-//                    },
-//                  );
-//                },
-//                value: selectoption[9],
-//              ),
-//            ],
-//          ),
-////
+            Row(
+              children: <Widget>[
+                DropdownButton(
+                  hint: Text("select Course"),
+                  items: itemlist.map<DropdownMenuItem<Course>>((Course cor) {
+                    return DropdownMenuItem<Course>(
+                      child: Text(cor.name),
+                      value: cor,
+                    );
+                  }).toList(),
+                  onChanged: (Course newvalue) {
+                    setState(() {
+                      selectoption[2] = newvalue;
+
+                      print(selectoption[2].name);
+                    });
+                  },
+                  value: selectoption[2],
+                ),
+                DropdownButton(
+                  hint: Text("select Course"),
+                  items: itemlist.map<DropdownMenuItem<Course>>((Course cor) {
+                    return DropdownMenuItem<Course>(
+                      child: Text(cor.name),
+                      value: cor,
+                    );
+                  }).toList(),
+                  onChanged: (Course newvalue) {
+                    setState(() {
+                      selectoption[3] = newvalue;
+
+                      print(selectoption[3].name);
+                    });
+                  },
+                  value: selectoption[3],
+                ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                DropdownButton(
+                  hint: Text("select Course"),
+                  items: itemlist.map<DropdownMenuItem<Course>>((Course cor) {
+                    return DropdownMenuItem<Course>(
+                      child: Text(cor.name),
+                      value: cor,
+                    );
+                  }).toList(),
+                  onChanged: (Course newvalue) {
+                    setState(() {
+                      selectoption[4] = newvalue;
+
+                      print(selectoption[4].name);
+                    });
+                  },
+                  value: selectoption[4],
+                ),
+                DropdownButton(
+                  hint: Text("select Course"),
+                  items: itemlist.map<DropdownMenuItem<Course>>((Course cor) {
+                    return DropdownMenuItem<Course>(
+                      child: Text(cor.name),
+                      value: cor,
+                    );
+                  }).toList(),
+                  onChanged: (Course newvalue) {
+                    setState(() {
+                      selectoption[5] = newvalue;
+
+                      print(selectoption[5].name);
+                    });
+                  },
+                  value: selectoption[5],
+                ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                DropdownButton(
+                  hint: Text("select Course"),
+                  items: itemlist.map<DropdownMenuItem<Course>>((Course cor) {
+                    return DropdownMenuItem<Course>(
+                      child: Text(cor.name),
+                      value: cor,
+                    );
+                  }).toList(),
+                  onChanged: (Course newvalue) {
+                    setState(() {
+                      selectoption[6] = newvalue;
+
+                      print(selectoption[6].name);
+                    });
+                  },
+                  value: selectoption[6],
+                ),
+                DropdownButton(
+                  hint: Text("select Course"),
+                  items: itemlist.map<DropdownMenuItem<Course>>((Course cor) {
+                    return DropdownMenuItem<Course>(
+                      child: Text(cor.name),
+                      value: cor,
+                    );
+                  }).toList(),
+                  onChanged: (Course newvalue) {
+                    setState(() {
+                      selectoption[7] = newvalue;
+
+                      print(selectoption[7].name);
+                    });
+                  },
+                  value: selectoption[7],
+                ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                DropdownButton(
+                  hint: Text("select Course"),
+                  items: itemlist.map<DropdownMenuItem<Course>>((Course cor) {
+                    return DropdownMenuItem<Course>(
+                      child: Text(cor.name),
+                      value: cor,
+                    );
+                  }).toList(),
+                  onChanged: (Course newvalue) {
+                    setState(() {
+                      selectoption[8] = newvalue;
+
+                      print(selectoption[8].name);
+                    });
+                  },
+                  value: selectoption[8],
+                ),
+                DropdownButton(
+                  hint: Text("select Course"),
+                  items: itemlist.map<DropdownMenuItem<Course>>((Course cor) {
+                    return DropdownMenuItem<Course>(
+                      child: Text(cor.name),
+                      value: cor,
+                    );
+                  }).toList(),
+                  onChanged: (Course newvalue) {
+                    setState(() {
+                      selectoption[9] = newvalue;
+
+                      print(selectoption[9].name);
+                    });
+                  },
+                  value: selectoption[9],
+                ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                DropdownButton(
+                  hint: Text("select Course"),
+                  items: itemlist.map<DropdownMenuItem<Course>>((Course cor) {
+                    return DropdownMenuItem<Course>(
+                      child: Text(cor.name),
+                      value: cor,
+                    );
+                  }).toList(),
+                  onChanged: (Course newvalue) {
+                    setState(() {
+                      selectoption[10] = newvalue;
+
+                      print(selectoption[10].name);
+                    });
+                  },
+                  value: selectoption[10],
+                ),
+                DropdownButton(
+                  hint: Text("select Course"),
+                  items: itemlist.map<DropdownMenuItem<Course>>((Course cor) {
+                    return DropdownMenuItem<Course>(
+                      child: Text(cor.name),
+                      value: cor,
+                    );
+                  }).toList(),
+                  onChanged: (Course newvalue) {
+                    setState(() {
+                      selectoption[11] = newvalue;
+
+                      print(selectoption[11].name);
+                    });
+                  },
+                  value: selectoption[11],
+                ),
+              ],
+            ),
+//
           ],
         ),
       ),

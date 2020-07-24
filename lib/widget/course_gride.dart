@@ -8,14 +8,15 @@ import 'course_item.dart';
 class CourseGride extends StatelessWidget {
   final bool showpath;
   final String courseList;
-  CourseGride({this.showpath,this.courseList=""});
+  CourseGride({this.showpath, this.courseList = ""});
   @override
   Widget build(BuildContext context) {
     final coursetdata = Provider.of<Courses>(context);
     var course = showpath ? coursetdata.patheditems : coursetdata.items;
-    if(courseList.isNotEmpty){
+    if (courseList.isNotEmpty) {
       final coursetdata = Provider.of<Courses>(context).items;
-       course = coursetdata.where((item) => item.package == courseList).toList();
+      course =
+          coursetdata.where((item) => item.catrgory == courseList).toList();
     }
 
     return GridView.builder(
